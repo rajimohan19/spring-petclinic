@@ -36,7 +36,9 @@ jobs:
   dockerize:
     needs: build
     runs-on: ubuntu-latest
-    steps: 
+    steps:
+      - name: Checkout SCM
+        uses: actions/checkout@v4
       - name: Download the jar file
         uses: actions/download-artifact@v4
         with: 
