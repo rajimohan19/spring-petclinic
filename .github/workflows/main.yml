@@ -1,7 +1,7 @@
 name: Java CI with Maven
 on: 
   push: 
-   branch: ["main"]
+   branches: ["main"]
 env:
  IMAGE_NAME: "spring-maven-app"
  DOCKER_USERNAME: "rajimohan19"
@@ -34,6 +34,7 @@ jobs:
          if-no-files-found: 'error'
          retention-days: 1 day
   dockerize:
+    needs: build
     runs-on: ubuntu-latest
     steps: 
      - name: Download the jar file
@@ -54,7 +55,8 @@ jobs:
          path: ${{ github.workspace }}/${{ env.IMAGE_NAME}}.tar
          if-no-files-found: 'error'
          retention-days: 1 day 
-  upload_to_dockerhub: 
+  upload_to_Dockerhub: 
+    needs: dockerize
     runs-on: ubuntu-latest
     steps: 
      - name: Download the tar file
