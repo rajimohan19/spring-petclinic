@@ -19,11 +19,11 @@ jobs:
          distribution: 'temurin'
          java-version: '17'
       - name: Check Java and MVN java-version
-        run: /
+        run: |
          java --version
          mvn --version
       - name: Package the application
-        run: /
+        run: |
          mvn -B Package
          ls -al ${{ github.workspace }}/target
       - name: Upload the jar file
