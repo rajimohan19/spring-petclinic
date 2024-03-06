@@ -45,7 +45,7 @@ jobs:
      - name: Check the jar file
        run: ls -al ${{ github.workspace }}/target/*.jar
      - name: Dockerize the application
-       run: docker build -t ${{ env.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.run_number }} .
+       run: docker build -t ${{ env.DOCKERHUB_USERNAME }}${{ env.IMAGE_NAME }}:${{ github.run_number }} .
      - name: Save the application as tar file
        run: docker save ${{ env.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.run_number }} > ${{ github.workspace }}/${{ env.IMAGE_NAME }}.tar
      - name: Upload the image tar file
