@@ -22,9 +22,9 @@ jobs:
         run: |
          java --version
          mvn --version
-      - name: Package the application
+      - name: package the application
         run: |
-         mvn -B Package
+         mvn -B package
          ls -al ${{ github.workspace }}/target
       - name: Upload the jar file
         uses: actions/upload-artifact@v4
